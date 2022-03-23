@@ -18,3 +18,9 @@ const io = new Server(httpServer, {
         credentials: true,
     },
 });
+
+app.get("/", (_, res) => res.send("Server is up"));
+
+httpServer.listen(port, host, () => {
+    console.log("Server is listening");
+});
