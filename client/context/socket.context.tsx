@@ -2,11 +2,15 @@ import { createContext, useContext } from "react";
 import { io } from "socket.io-client";
 import { SOCKET_URL } from "../config/default";
 
-const SocketContext = createContext({});
+const socket = io(SOCKET_URL);
 
-const SocketsProvider = (props: any) => {
+const SocketContext = createContext({ socket });
+
+export const SocketsProvider = (props: any) => {
     return (
-        <SocketContext.Provider value={{}}>{...props}</SocketContext.Provider>
+        <SocketContext.Provider value={{ socket }}>
+            {...props}
+        </SocketContext.Provider>
     );
 };
 
