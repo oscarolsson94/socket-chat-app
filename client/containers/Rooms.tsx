@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import EVENTS from "../config/events";
+import { EVENTS } from "../config/events";
 import { useSockets } from "../context/socket.context";
 import styles from "../styles/Room.module.css";
 
@@ -7,7 +7,7 @@ export const RoomsContainer = () => {
     const { socket, roomId, rooms } = useSockets();
     const newRoomRef = useRef(null);
 
-    function handleCreateRoom() {
+    const handleCreateRoom = () => {
         //get the room name
         const roomName = newRoomRef.current.value || "";
 
@@ -18,13 +18,13 @@ export const RoomsContainer = () => {
 
         // set room name input to empty string
         newRoomRef.current.value = "";
-    }
+    };
 
-    function handleJoinRoom(key) {
+    const handleJoinRoom = (key) => {
         if (key === roomId) return;
 
         socket.emit(EVENTS.CLIENT.JOIN_ROOM, key);
-    }
+    };
 
     return (
         <nav className={styles.wrapper}>

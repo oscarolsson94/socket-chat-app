@@ -3,6 +3,9 @@ import { log } from "./utils/logger";
 
 const EVENTS = {
     connection: "connection",
+    CLIENT: {
+        CREATE_ROOM: "CREATE_ROOM",
+    },
 };
 
 export const socket = ({ io }: { io: Server }) => {
