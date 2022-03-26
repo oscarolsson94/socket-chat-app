@@ -12,5 +12,9 @@ export const socket = ({ io }: { io: Server }) => {
     log.info(`Sockets enabled`);
     io.on(EVENTS.connection, (socket: Socket) => {
         log.info(`user connected ${socket.id}`);
+
+        socket.on(EVENTS.CLIENT.CREATE_ROOM, (roomName) => {
+            console.log(roomName);
+        });
     });
 };
