@@ -21,8 +21,22 @@ export default function Home() {
     };
     return (
         <div>
-            <RoomsContainer />
-            <MessagesContainer />
+            {!username && (
+                <div>
+                    <input
+                        placeholder="Username"
+                        ref={usernameRef}
+                        type="text"
+                    />
+                    <button onClick={handleSetUser}>Start</button>
+                </div>
+            )}
+            {username && (
+                <>
+                    <RoomsContainer />
+                    <MessagesContainer />
+                </>
+            )}
         </div>
     );
 }
